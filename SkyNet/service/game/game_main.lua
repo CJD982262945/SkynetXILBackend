@@ -5,16 +5,15 @@ local cluster      = require "cluster"
 
 skynet.start(function ()
   -- 基础服务
-  local setting_template = require 'settings'
+  local settings = require 'settings'
   local lobbyId = skynet.getenv("lobbyId")
   INFO("-----lobbyId-----", lobbyId, " will begin")
+  local cfg = settings.lobbys[lobbyId]
+  assert(cfg)
 
-  local settings = setting_template.lobbys[lobbyId]
-  assert(settings)
-
-  skynet.uniqueservice('debug_console', settings.console_port)
-  skynet.uniqueservice('dbproxy', settings.nodeName)
-  skynet.uniqueservice('word_crab', setting_template.word_crab_file)
+  skynet.uniqueservice('debug_console', cfg.console_port)
+  skynet.uniqueservice('word_crab', cfg.word_crab_file)
+  skynet.uniqueservice('dbproxy', cfg.nodeName)
   skynet.uniqueservice("game_shutdown")
   
 

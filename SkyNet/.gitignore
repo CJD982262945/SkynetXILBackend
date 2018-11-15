@@ -1,0 +1,10 @@
+# 如果有需要，也可以加到仓库中
+.vscode
+luac.out
+*.pid
+*.o
+*.so
+*.tar.gz
+*.log
+*.svn
+/client/exc.lua

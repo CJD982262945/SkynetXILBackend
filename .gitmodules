@@ -1,0 +1,21 @@
+[submodule "SkyNet/skynet"]
+	path = SkyNet/skynet
+	url = https://github.com/cloudfreexiao/skynet.git
+[submodule "SkyNet/client/lsocket"]
+	path = SkyNet/client/lsocket
+	url = https://github.com/cloudwu/lsocket.git
+[submodule "SkyNet/client/termfx"]
+	path = SkyNet/client/termfx
+	url = https://github.com/LuaDist2/termfx.git
+[submodule "SkyNet/lualib-src/luafilesystem"]
+	path = SkyNet/lualib-src/luafilesystem
+	url = https://github.com/keplerproject/luafilesystem.git
+[submodule "SkyNet/lualib-src/lua-cjson"]
+	path = SkyNet/lualib-src/lua-cjson
+	url = https://github.com/cloudwu/lua-cjson.git
+[submodule "SkyNet/lualib-src/crab"]
+	path = SkyNet/lualib-src/crab
+	url = https://github.com/xjdrew/crab.git
+[submodule "SkyNet/3rd/curl"]
+	path = SkyNet/3rd/curl
+	url = https://github.com/curl/curl.git

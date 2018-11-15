@@ -1,5 +1,6 @@
 
 local login_const = require "login_api.login_const"
+local sdk = login_const.sdk
 
 local function inner_auth(openId, userData)
     return true
@@ -28,14 +29,13 @@ local function weichat_auth(openId, userData)
 end
 
 
-local sdk = login_const.sdk
 local auth_handler = {
-    [sdk.debug] = debug_auth,
-    [sdk.inner] = inner_auth,
-    [sdk.weichat] = weichat_auth,
+    [tostring(sdk.debug)] = debug_auth,
+    [tostring(sdk.inner)] = inner_auth,
+    [tostring(sdk.weichat)] = weichat_auth,
 }
 
 return function(openId, sdk, userData)
-    local fc = auth_handler[sdk]
-    return fc(openId, userData)
+    local f= auth_handler[tostring(sdk)]
+    return f(openId, userData)
 end

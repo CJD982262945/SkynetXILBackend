@@ -23,8 +23,8 @@ function logind.auth_handler(args)
     local sdk = crypt.base64decode(args_array[2])
     local pf = crypt.base64decode(args_array[3])
     local serverId = crypt.base64decode(args_array[4])
-	local userData = crypt.base64decode(args_array[5])
-
+    local userData = crypt.base64decode(args_array[5])
+    
 	DEBUG("login auth_handler openId:", openId, " sdk:", sdk, " pf:", pf, " serverId:", serverId, " userData:", userData)
 	local ret, newOpenId = login_auth(openId, sdk, userData)
 	if not ret then

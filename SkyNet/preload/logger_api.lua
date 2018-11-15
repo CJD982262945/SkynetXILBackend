@@ -13,7 +13,7 @@ local log_level = {
   LOG_FATAL     = 6,
 }
 
-local defaultLevel = tonumber(skynet.getenv "log_default_lv") or log_level.LOG_DEBUG
+local defaultLevel = log_level.LOG_DEBUG
 local prefix = ""
 function LOG_PREFIX(pre)
   prefix = "[" .. pre .. "]"

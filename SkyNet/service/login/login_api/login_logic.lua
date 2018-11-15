@@ -1,7 +1,8 @@
 local dbproxyx = require 'dbproxyx'
 local account_db_key = require "dbset".account_db_key
 
-local game_server_conf = require "game_server_conf"
+local settings = require "settings"
+
 local login_const = require "login_api.login_const"
 
 
@@ -35,9 +36,9 @@ function M.get_real_openid(openId, sdk, pf)
 end
 
 function M.get_server(serverId)
-    local lobbyInfo = game_server_conf.lobbys[serverId]
+    local lobbyInfo = settings.lobbys[serverId]
     assert(lobbyInfo, "GameServer not found ID=" .. serverId)
-    return lobbyInfo.nodeName .. "node", lobbyInfo.outerIp
+    return lobbyInfo.nodeName .. "node", lobbyInfo.gate_host .. "@" .. lobbyInfo.gate_port
 end
 
 local user_online = {}	-- 记录玩家所登录的服务器

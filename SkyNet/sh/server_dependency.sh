@@ -6,5 +6,3 @@ ulimit -c unlimited
 CENTER_ON=true
 LOGIN_ON=true
 GAME1_ON=true
-
-GAME1_EXIT_PORT=9012

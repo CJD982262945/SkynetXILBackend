@@ -37,7 +37,7 @@ end
 function M.get_server(serverId)
     local lobbyInfo = game_server_conf.lobbys[serverId]
     assert(lobbyInfo, "GameServer not found ID=" .. serverId)
-    return lobbyInfo.nodeName .. "node"
+    return lobbyInfo.nodeName .. "node", lobbyInfo.outerIp
 end
 
 local user_online = {}	-- 记录玩家所登录的服务器

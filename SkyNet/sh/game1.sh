@@ -92,7 +92,7 @@ function stop(){
 
   EXIT_PORT=$2
   if [ -z $EXIT_PORT ]; then
-    EXIT_PORT=7210
+    EXIT_PORT=15012
   fi
   python $CUR_PATH"/stopLobby.py" $EXIT_PORT
   sleep 1

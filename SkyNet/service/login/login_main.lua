@@ -6,6 +6,8 @@ skynet.start(function ()
 
     skynet.uniqueservice('debug_console', settings.login_conf.console_port)
     skynet.uniqueservice('webclient')
+    skynet.uniqueservice('dbproxy', "login")
+
     skynet.uniqueservice("logind")
     
     cluster.open "loginnode"

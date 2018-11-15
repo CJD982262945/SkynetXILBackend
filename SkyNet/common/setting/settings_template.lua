@@ -5,14 +5,14 @@ settings.word_crab_file = 'data/word_crab/words.txt'
 
 -- 登陆认证服
 settings.login_conf = {
-    console_port          = 9010,
-    login_port            = 9110,   --(暴露) 登陆认证端口
+    console_port          = 15010,
+    login_port            = 15110,   --(暴露) 登陆认证端口
     login_slave_cout      = 8,      -- 登陆认证代理个数
 }
 
 -- 中心服
 settings.center_conf = {
-    console_port           = 9011,
+    console_port           = 15011,
     nodeName               = "center",
 }
 
@@ -20,10 +20,10 @@ settings.lobbys = {
         ['1'] = {
             -- 网络配置
             nodeName     = "lobby1",  -- 每个lobby名字必须唯一
-            console_port  = 9012, -- 执行关服操作 server_dependency 中也要保持一致
+            console_port  = 15012, -- 执行关服操作 game.sh 中 EXIT_PORT 也要保持一致
 
             gate_host     = '127.0.0.1', -- 需要手动修改
-            gate_port     = 9112, 		 --(暴露 网关端口 TCP)
+            gate_port     = 15112, 		 --(暴露 网关端口 TCP)
             max_client    = 4000,
         },
     }
@@ -37,7 +37,14 @@ settings.db_cnf = {
             host = "127.0.0.1", 
             port = 16379,
             db = 0,
-        }
+        },
+
+        dbproxy = "mongodb",
+        mongodb_maxinst = 8,
+        mongodb_cnf = {
+            host = "127.0.0.1",
+            port = "27017",
+        },
     },
 
     center = {
@@ -57,11 +64,12 @@ settings.db_cnf = {
             db = 0, 
         },
         
-        dbproxy = "mongodb",-- "mongodb" "mysql"
+        dbproxy = "mongodb",
 
         mongodb_maxinst = 8,
         mongodb_cnf = {
             host = "127.0.0.1",
+            port = "27017",
         },
     },
 

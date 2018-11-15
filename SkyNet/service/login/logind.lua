@@ -9,7 +9,7 @@ local login_auth = require "login_api.login_auth"
 local login_logic = require "login_api.login_logic"
 
 
-local server = {
+local logind = {
 	host = "0.0.0.0",
 	port = settings.login_conf.login_port,
 	multilogin = false,	-- disallow multilogin
@@ -17,7 +17,7 @@ local server = {
 	instance = settings.login_conf.login_slave_cout,
 }
 
-function server.auth_handler(args)
+function logind.auth_handler(args)
     local args_array = string.split(args, "@")
     local openId = crypt.base64decode(args_array[1])
     local sdk = crypt.base64decode(args_array[2])
@@ -34,14 +34,13 @@ function server.auth_handler(args)
         openId = newOpenId
     end
     local uid = login_logic.get_real_openid(openId, sdk, pf)
-    local server = login_logic.get_server(serverId)
-	return server, uid, pf
+	return serverId, uid, pf
 end
 
 -- 认证成功后，回调此函数，登录游戏服务器
-function server.login_handler(server, uid, pf, secret)
+function logind.login_handler(serverId, uid, pf, secret)
+    local server, outerIp = login_logic.get_server(serverId)
     INFO(string.format("%d@%s is login, secret is %s", uid, server, crypt.hexencode(secret)))
-    
 	-- only one can login, because disallow multilogin
 	local last = login_logic.get_user_online(uid)
 	-- 如果该用户已经在某个服务器上登录了，先踢下线
@@ -68,7 +67,7 @@ function server.login_handler(server, uid, pf, secret)
     end
 
     login_logic.get_user_online(uid, { subid = subid, server = server })
-	return lobbyInfo.outerIp .. "@" .. uid .. "@" .. subId
+	return outerIp .. "@" .. uid .. "@" .. subId
 end
 
 local CMD = {}
@@ -79,9 +78,9 @@ function CMD.logout(data)
 end
 
 
-function server.command_handler(command, source, ...)
+function logind.command_handler(command, source, ...)
 	local f = assert(CMD[command])
 	return f(source, ...)
 end
 
-login(server)	-- 启动登录服务器
+login(logind)	-- 启动登录服务器

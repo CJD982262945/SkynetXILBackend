@@ -1,5 +1,5 @@
 local skynet = require 'skynet.manager'
-local cluster = require "cluster"
+local cluster = require "skynet.cluster"
 
 skynet.start(function ()
   local settings = require 'settings'

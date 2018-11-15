@@ -7,7 +7,7 @@ settings.word_crab_file = 'data/word_crab/words.txt'
 settings.login_conf = {
     console_port          = 9010,
     login_port            = 9110,   --(暴露) 登陆认证端口
-    login_slave_cout      = 4,      -- 登陆认证代理个数
+    login_slave_cout      = 8,      -- 登陆认证代理个数
 }
 
 -- 中心服

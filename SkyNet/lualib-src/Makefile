@@ -11,12 +11,14 @@ UTF8_SO 	 			= $(LUA_CLIB_PATH)/utf8.so
 CRAB_SO 	 			= $(LUA_CLIB_PATH)/crab.so
 WEBSOCKETNETPACK_SO		= $(LUA_CLIB_PATH)/websocketnetpack.so
 CLIENTWEBSOCKET_SO		= $(LUA_CLIB_PATH)/clientwebsocket.so 
-CJSON_SO				= $(LUA_CLIB_PATH)/cjson.so 
+CJSON_SO				= $(LUA_CLIB_PATH)/cjson.so
 
+SOCKET_PACKAGE_SRC = service_package.c
+SOCKET_PACKAGE_SO = $(LUA_CLIB_PATH)/package.so
 
 
 all: $(HASH_SO) $(LFS_SO) $(WEBCLIENT_SO) $(UTF8_SO) $(CRAB_SO) \
-	$(WEBSOCKETNETPACK_SO) $(CLIENTWEBSOCKET_SO) $(CJSON_SO) \
+	$(WEBSOCKETNETPACK_SO) $(CLIENTWEBSOCKET_SO) $(CJSON_SO) $(SOCKET_PACKAGE_SO) \
 	
 
 $(HASH_SO): lua-hash.c
@@ -45,6 +47,8 @@ $(WEBSOCKETNETPACK_SO):lua-websocketnetpack.c
 $(CJSON_SO) : | $(LUA_CLIB_PATH)
 	cd ./lua-cjson && $(MAKE) -j8  LUA_INCLUDE_DIR=../../skynet/3rd/lua && cp cjson.so ../../luaclib/
 
+$(SOCKET_PACKAGE_SO): $(SOCKET_PACKAGE_SRC)
+	$(CC) $(LFLAGS) -o $@ $(CFLAGS) $< -I../skynet/skynet-src
 
 clean:
 	rm -f $(LUA_CLIB_PATH)/*.so

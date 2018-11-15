@@ -16,8 +16,7 @@ local function add(err)
 end
 
 SYSTEM_ERROR = {
-    ok                          = add{code = 0, desc = "请求成功"},
-    success                     = add{code = 100, desc = "请求成功"},
+    success                     = add{code = 0, desc = "请求成功"},
     invalid_param               = add{code = 101, desc = "非法参数"},
     unknow                      = add{code = 102, desc = "未知错误"},
     argument                    = add{code = 103, desc = "参数错误"},

@@ -1,13 +1,15 @@
 -- 描述: 数据库配置（）
 
 local M = {}
-------------------------角色模块db key--------------------------------
 
 M.mongodb_tb = {
-    game = "moba_game", -- 游戏数据
+    game = "xil_game",
 }
 
-----------------------------------------------------------------------
+M.account_db_key = {
+    tbname = M.mongodb_tb.game,
+    cname = "account",
+}
 
 
 return M

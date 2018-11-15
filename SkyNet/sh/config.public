@@ -19,26 +19,26 @@ luaservice = concat {
 
   "service/?.lua",
   "service/?/?.lua",
+
   "service/login/?.lua",
-
-  "service/config/?.lua",
-
   "service/center/?.lua",
   "service/game/?.lua",
   "service/common/?.lua",
+  "service/agent/?.lua",
 }
 
 lua_path   = concat {
   "skynet/lualib/?.lua",
-  "skynet/lualib/compat10/?.lua",
 
   "preload/?.lua",
   "common/?.lua",
   "lualib/?.lua",
 
-  "service/?.lua",
-  "service/common/?.lua",
   "service/login/?.lua",
+  "service/center/?.lua",
+  "service/game/?.lua",
+  "service/common/?.lua",
+  "service/agent/?.lua",
 }
 
 lua_cpath  = concat {

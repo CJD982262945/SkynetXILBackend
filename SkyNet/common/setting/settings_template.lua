@@ -17,7 +17,7 @@ settings.center_conf = {
 }
 
 settings.lobbys = {
-        '1' = {
+        ['1'] = {
             -- 网络配置
             nodeName     = "lobby1",  -- 每个lobby名字必须唯一
             console_port  = 9012, -- 执行关服操作 server_dependency 中也要保持一致

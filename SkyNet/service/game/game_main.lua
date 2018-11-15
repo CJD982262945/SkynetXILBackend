@@ -6,7 +6,7 @@ local cluster      = require "cluster"
 skynet.start(function ()
   -- 基础服务
   local setting_template = require 'settings'
-  local lobbyId = tonumber(skynet.getenv("lobbyId")) 
+  local lobbyId = skynet.getenv("lobbyId")
   INFO("-----lobbyId-----", lobbyId, " will begin")
 
   local settings = setting_template.lobbys[lobbyId]

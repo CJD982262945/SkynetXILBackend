@@ -15,7 +15,7 @@ end
 local M = {
     version = "2018_11_15_1",
     lobbys = {
-        '1' = { outerIp = calIPStr('1'), name = "lobby1", },
+        ['1'] = { outerIp = calIPStr('1'), name = "lobby1", },
     },
     },
 }

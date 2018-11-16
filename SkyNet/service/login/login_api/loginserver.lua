@@ -44,6 +44,7 @@ local function assert_socket(service, v, fd)
 end
 
 local function write(service, fd, text)
+	skynet.error("text:", text)
 	assert_socket(service, socket.write(fd, text), fd)
 end
 
@@ -61,6 +62,7 @@ local function launch_slave(auth_handler)
 		if #clientkey ~= 8 then
 			error "Invalid client key"
 		end
+
 		local serverkey = crypt.randomkey()
 		write("auth", fd, crypt.base64encode(crypt.dhexchange(serverkey)).."\n")
 
@@ -73,9 +75,9 @@ local function launch_slave(auth_handler)
 			write("auth", fd, "400 Bad Request\n")
 			error "challenge failed"
 		end
-
+		ERROR("+++++++++6777777777777++++++")
 		local etoken = assert_socket("auth", socket.readline(fd),fd)
-
+		ERROR("+++++++++88888888++++++")
 		local token = crypt.desdecode(secret, crypt.base64decode(etoken))
 
 		local ok, server, uid, pf =  pcall(auth_handler,token)

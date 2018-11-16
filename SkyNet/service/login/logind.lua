@@ -28,7 +28,7 @@ function logind.auth_handler(args)
 	DEBUG("login auth_handler openId:", openId, " sdk:", sdk, " pf:", pf, " serverId:", serverId, " userData:", userData)
 	local ret, newOpenId = login_auth(openId, sdk, userData)
 	if not ret then
-		error("auth failed")
+		error("login auth failed")
     end
     if newOpenId then
         openId = newOpenId

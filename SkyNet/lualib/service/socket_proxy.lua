@@ -35,13 +35,7 @@ function proxy.subscribe(fd)
 end
 
 function proxy.read(fd)
-	local ok,msg,sz = pcall(skynet.rawcall , get_addr(fd), "text", "R")
-	if ok then
-		return msg,sz
-	else
-		map[fd] = nil
-		error "disconnect"
-	end
+	return skynet.rawcall(get_addr(fd), "text", "R")
 end
 
 function proxy.write(fd, msg, sz)

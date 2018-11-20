@@ -4,9 +4,9 @@ local crypt = require "skynet.crypt"
 
 local settings = require "settings"
 
-local login = require "login_api.loginserver"
-local login_auth = require "login_api.login_auth"
-local login_logic = require "login_api.login_logic"
+local login = require "logind.loginserver"
+local login_auth = require "logind.login_auth"
+local login_logic = require "logind.login_logic"
 
 
 local logind = {
@@ -40,7 +40,7 @@ end
 -- 认证成功后，回调此函数，登录游戏服务器
 function logind.login_handler(serverId, uid, pf, secret)
     local server, outerIp = login_logic.get_server(serverId)
-    INFO(string.format("%d@%s is login, secret is %s", uid, server, crypt.hexencode(secret)))
+    INFO(string.format("%s@%s is login, secret is %s", uid, server, crypt.hexencode(secret)))
 	-- only one can login, because disallow multilogin
 	local last = login_logic.get_user_online(uid)
 	-- 如果该用户已经在某个服务器上登录了，先踢下线
@@ -58,9 +58,7 @@ function logind.login_handler(serverId, uid, pf, secret)
 		error(string.format("user %d is already online", uid))
 	end
 
-    -- TODO: 添加 限制登录
-	-- 登录游戏服务器
-	INFO(string.format("uid=%d is logging to gameserver %s ...", uid, server))
+	INFO(string.format("uid=%s is logging to gameserver %s ...", uid, server))
 	local ok, subid = pcall(cluster.call, server, "hub", "signin", {uid = uid, secret = secret})
 	if not ok then
 		error("login gameserver error")

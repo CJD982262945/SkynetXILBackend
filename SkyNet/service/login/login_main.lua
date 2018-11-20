@@ -8,8 +8,9 @@ skynet.start(function ()
     skynet.uniqueservice('webclient')
     skynet.uniqueservice('dbproxy', "login")
 
-    skynet.uniqueservice("logind")
-    
+    -- skynet.uniqueservice("logind")
+    skynet.uniqueservice("loginw")
+
     cluster.open "loginnode"
     skynet.exit()
 end)

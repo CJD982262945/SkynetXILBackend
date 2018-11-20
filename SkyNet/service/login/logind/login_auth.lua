@@ -1,5 +1,5 @@
 
-local login_const = require "login_api.login_const"
+local login_const = require "logind.login_const"
 local sdk = login_const.sdk
 
 local function inner_auth(openId, userData)

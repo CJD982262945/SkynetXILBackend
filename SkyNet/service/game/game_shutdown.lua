@@ -4,9 +4,8 @@ require "skynet.manager"
 local CMD = {}
 
 function CMD.shutdown()
-    skynet.call(".lobby", "lua", "stopLobby")
-    skynet.call(".lobbyws", "lua", "stopLobby")
-    pcall(skynet.call, ".world", 'lua', 'stopWorld')
+    -- skynet.call(".lobby", "lua", "stopLobby")
+    -- pcall(skynet.call, ".world", 'lua', 'stopWorld')
     --TODO: 增加其他关服操作
 end
 

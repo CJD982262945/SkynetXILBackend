@@ -8,6 +8,7 @@ settings.login_conf = {
     console_port          = 15010,
     login_port            = 15110,   --(暴露) 登陆认证端口
     login_slave_cout      = 8,      -- 登陆认证代理个数
+    api_server_ca   = "hDJ^54D@!&DHkkdh095hj"
 }
 
 -- 中心服

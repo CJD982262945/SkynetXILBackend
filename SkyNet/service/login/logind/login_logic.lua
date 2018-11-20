@@ -3,7 +3,7 @@ local account_db_key = require "dbset".account_db_key
 
 local settings = require "settings"
 
-local login_const = require "login_api.login_const"
+local login_const = require "logind.login_const"
 
 
 local M = {}
@@ -41,6 +41,13 @@ function M.get_server(serverId)
     return lobbyInfo.nodeName .. "node", lobbyInfo.gate_host .. "@" .. lobbyInfo.gate_port
 end
 
+function M.get_server_cfg(serverId)
+    local lobbyInfo = settings.lobbys[serverId]
+    assert(lobbyInfo, "GameServer not found ID=" .. serverId)
+    return lobbyInfo.nodeName .. "node", lobbyInfo.gate_host, lobbyInfo.gate_port
+end
+
+
 local user_online = {}	-- 记录玩家所登录的服务器
 
 
@@ -55,5 +62,6 @@ end
 function M.add_user_online(uid, user)
     user_online[uid] = user
 end
+
 
 return M

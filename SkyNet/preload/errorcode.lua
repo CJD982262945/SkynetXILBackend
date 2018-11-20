@@ -24,6 +24,15 @@ SYSTEM_ERROR = {
     player_not_found            = add{code = 105, desc = "没有此玩家"},
 }
 
+LOGIN_ERROR = {
+    login_success               = add{code = 200, desc = "成功"},
+    login_argument              = add{code = 201, desc = "参数错误"},
+    api_method_nil              = add{code = 202, desc = "没有此方法"},
+    api_module_nil              = add{code = 203, desc = "没有此模块"},
+    unauthorized                = add{code = 204, desc = "未认证通过"},
+    unsupport                   = add{code = 205, desc = "未支持方法"},
+}
+
 
 
 return errorcode

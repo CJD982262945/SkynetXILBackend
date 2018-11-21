@@ -6,6 +6,11 @@ local urllib        = require "http.url"
 local json          = require "json.json"
 local settings      = require 'settings'
 
+-- require "b3.b3"
+-- local entitas = require "entitas.entitas"
+-- DEBUG("b3:", DUMP(b3))
+-- DEBUG("entitas:", DUMP(entitas))
+
 
 local mode = ...
 
